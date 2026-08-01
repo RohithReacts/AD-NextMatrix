@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { PriceForm } from "@/components/PriceForm";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { 
   Award01Icon, 
@@ -134,8 +136,20 @@ export function Products() {
               <CardHeader className="pt-5 pb-2 text-center">
                 <CardTitle className="text-sm font-semibold text-red-600 line-clamp-1">{product.title}</CardTitle>
               </CardHeader>
-              <CardContent className="flex-1 pb-4 text-center">
-                <p className="font-semibold text-foreground text-sm">{product.price}</p>
+              <CardContent className="flex-1 pb-2 pt-2 text-center">
+                <Dialog>
+                  <DialogTrigger render={
+                    <Button className="w-full font-semibold text-sm rounded-full border border-red-500/20 bg-red-500/5 text-red-600 dark:text-red-400 hover:bg-red-500/10 dark:hover:bg-red-500/20 hover:border-red-500/40 dark:hover:border-red-400/50 transition-all duration-300 shadow-sm hover:shadow">
+                      Ask for Price
+                    </Button>
+                  } />
+                  <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Get Price for {product.title}</DialogTitle>
+                    </DialogHeader>
+                    <PriceForm productTitle={product.title} />
+                  </DialogContent>
+                </Dialog>
               </CardContent>
               <CardFooter className="justify-center pb-6">
                 <Button variant="ghost" className="text-red-600 hover:text-red-700 hover:bg-red-50 font-medium flex items-center gap-2 group/btn">

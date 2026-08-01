@@ -1,5 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { PriceForm } from "@/components/PriceForm";
 
 export function Pricing() {
   const plans = [
@@ -66,9 +68,9 @@ export function Pricing() {
               <CardContent className="flex-1 flex flex-col text-center px-6 pb-8 pt-2">
                 <div className="mb-8">
                   <span className="text-2xl lg:text-[26px] font-extrabold text-foreground block tracking-tighter mb-1">
-                    {plan.price}
+                    Get Price
                   </span>
-                  <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{plan.unit}</span>
+                  <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Custom Quote</span>
                 </div>
                 
                 <ul className="space-y-4 mb-8 text-sm text-muted-foreground flex-1 text-left">
@@ -81,10 +83,19 @@ export function Pricing() {
                     </li>
                   ))}
                 </ul>
-                
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white mt-auto rounded-xl shadow-sm hover:shadow-md transition-all font-semibold py-6">
-                  Get Quote
-                </Button>
+                <Dialog>
+                  <DialogTrigger render={
+                    <Button className="w-full bg-red-600 hover:bg-red-700 text-white mt-auto rounded-xl shadow-sm hover:shadow-md transition-all font-semibold py-6">
+                      Get Quote
+                    </Button>
+                  } />
+                  <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Get Quote for {plan.title}</DialogTitle>
+                    </DialogHeader>
+                    <PriceForm productTitle={plan.title} />
+                  </DialogContent>
+                </Dialog>
               </CardContent>
             </Card>
           ))}
