@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-
+import aboutImg from "@/assets/about.png";
 export function AboutUs() {
   return (
     <section id="about-us" className="w-full py-16 md:py-24 bg-muted/10">
@@ -11,7 +11,7 @@ export function AboutUs() {
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="relative h-72 lg:h-auto w-full bg-muted flex items-center justify-center overflow-hidden">
                 <Image
-                  src="/about.png"
+                  src={aboutImg}
                   alt="About AdNextMatrix"
                   width={1200}
                   height={800}
@@ -35,9 +35,13 @@ export function AboutUs() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button className="w-full sm:w-fit bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-md hover:shadow-lg transition-all px-8 py-6 font-semibold">
-                    Get in Touch
-                  </Button>
+                  <a href="https://wa.me/+919533811528" target="_blank" rel="noopener noreferrer" className="w-full sm:w-fit block">
+                    <Button 
+                      className="w-full bg-red-600 hover:bg-red-700 text-white rounded-xl shadow-md hover:shadow-lg transition-all px-8 py-6 font-semibold"
+                    >
+                      Get in Touch
+                    </Button>
+                  </a>
                   <Button variant="outline" className="w-full sm:w-fit rounded-xl px-8 py-6 font-semibold hover:text-red-600 hover:border-red-600 transition-colors">
                     Our Mission
                   </Button>

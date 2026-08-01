@@ -52,7 +52,7 @@ export function Footer() {
               </div>
 
               <div className="flex flex-col space-y-3">
-                <h4 className="font-semibold text-foreground mb-2">Contact</h4>
+                <h4 className="font-semibold text-foreground mb-2">Customer Care</h4>
                 <a href="adnextmatrix@gmail.com" className="text-sm text-muted-foreground hover:text-red-600 transition-colors">adnextmatrix@gmail.com</a>
                 <a href="tel:+919110777863" className="text-sm text-muted-foreground hover:text-red-600 transition-colors">+91 9110 777 863</a>
                 <span className="text-sm text-muted-foreground leading-relaxed mt-2">
