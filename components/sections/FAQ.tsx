@@ -7,23 +7,23 @@ import { cn } from "@/lib/utils";
 const faqs = [
   {
     question: "What services does AdNextMatrix provide?",
-    answer: "We offer a comprehensive suite of IT solutions, including custom web development, robust mobile applications, strategic digital marketing, and advanced AI integrations tailored to scale your business."
+    answer: "We Provide LED screen, Digital Advertising, Smart LED screen, Outdoor screen, indoor screen, wall mounted screen, movable Screen, and more.."
   },
   {
     question: "How long does it usually take to complete a project?",
-    answer: "Project timelines vary depending on complexity and scope. A standard landing page might take 2-3 weeks, while a full-scale web application could take 3-4 months. We provide a detailed timeline during our initial consultation."
+    answer: "Project timelines vary depending on the scale and requirements. A standard indoor LED screen installation might take a few days, while large outdoor screens or full-scale digital advertising campaigns can take a few weeks. We provide a detailed timeline during our initial consultation."
   },
   {
     question: "Do you offer post-launch support and maintenance?",
-    answer: "Absolutely! We believe in long-term partnerships. We offer various maintenance packages that include security updates, performance monitoring, and continuous improvements to keep your platform running flawlessly."
+    answer: "Absolutely! We believe in long-term partnerships. We offer comprehensive maintenance packages that include technical support, routine screen maintenance, and performance monitoring to keep your displays running flawlessly."
   },
   {
     question: "Can you help redesign an existing website or app?",
-    answer: "Yes, we specialize in revamping legacy systems. We analyze your current architecture, improve the user experience (UX/UI), and upgrade the technology stack to ensure it meets modern standards."
+    answer: "Yes, in addition to our LED screen services, our digital advertising expertise includes helping you revamp existing digital assets, websites, and applications to ensure they align with modern standards and your current marketing goals."
   },
   {
     question: "What makes AdNextMatrix different from other agencies?",
-    answer: "Our unique approach blends cutting-edge technology with premium design aesthetics. We don't just write code; we architect solutions that drive growth, using data-driven strategies and a deep understanding of your business goals."
+    answer: "Our unique approach blends high-quality hardware, like our Smart LED screens, with strategic digital advertising. We don't just provide screens; we architect comprehensive digital solutions that drive growth and maximize your brand's visibility."
   }
 ];
 

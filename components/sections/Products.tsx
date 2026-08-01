@@ -113,7 +113,7 @@ export function Products() {
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Our <span className="text-red-600">Innovative</span> Products
+            Our <span className="text-red-600 dark:text-red-600">Innovative</span> Products
           </h2>
           <p className="text-muted-foreground text-lg">
             Discover our range of smart split-screen solutions designed to elevate your visual experience and streamline your workflow.
@@ -134,12 +134,12 @@ export function Products() {
                 </div>
               </div>
               <CardHeader className="pt-5 pb-2 text-center">
-                <CardTitle className="text-sm font-semibold text-red-600 line-clamp-1">{product.title}</CardTitle>
+                <CardTitle className="text-sm font-semibold text-foreground line-clamp-1">{product.title}</CardTitle>
               </CardHeader>
               <CardContent className="flex-1 pb-2 pt-2 text-center">
                 <Dialog>
                   <DialogTrigger render={
-                    <Button className="w-full font-semibold text-sm rounded-full border border-red-500/20 bg-red-500/5 text-red-600 dark:text-red-400 hover:bg-red-500/10 dark:hover:bg-red-500/20 hover:border-red-500/40 dark:hover:border-red-400/50 transition-all duration-300 shadow-sm hover:shadow">
+                    <Button className="w-full font-semibold rounded-full bg-gradient-to-b from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white shadow-sm hover:shadow-md transition-all duration-300 ring-1 ring-red-600/20 hover:ring-red-600/50 hover:-translate-y-0.5">
                       Ask for Price
                     </Button>
                   } />
@@ -151,9 +151,9 @@ export function Products() {
                   </DialogContent>
                 </Dialog>
               </CardContent>
-              <CardFooter className="justify-center pb-6">
-                <Button variant="ghost" className="text-red-600 hover:text-red-700 hover:bg-red-50 font-medium flex items-center gap-2 group/btn">
-                  View Details <span className="text-lg group-hover/btn:translate-x-1 transition-transform">→</span>
+              <CardFooter className="justify-center pb-6 pt-0">
+                <Button variant="outline" className="w-full font-medium rounded-full border-border/80 hover:border-red-200 dark:hover:border-red-900/50 hover:bg-red-50/50 dark:hover:bg-red-950/30 hover:text-red-600 dark:hover:text-red-400 transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                  View Details <span className="text-lg group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
                 </Button>
               </CardFooter>
             </Card>
@@ -161,7 +161,7 @@ export function Products() {
         </div>
         
         <div className="mt-12 text-center mb-24">
-          <Button variant="outline" size="lg" className="rounded-full border-amber-600/30 hover:bg-amber-600/5 text-amber-600">
+          <Button variant="outline" size="lg" className="rounded-full border-amber-600/30 dark:border-amber-500/30 hover:bg-amber-600/5 dark:hover:bg-amber-500/10 text-amber-600 dark:text-amber-400">
             See All Products
           </Button>
         </div>

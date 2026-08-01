@@ -55,11 +55,14 @@ export function Hero() {
                 Explore Products
               </Button>
             </Link>
-            <Link href="/get-a-quote" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="w-full h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base rounded-full backdrop-blur-sm bg-background/50 border-muted-foreground/30 hover:bg-accent/50">
-                Get a Quote
-              </Button>
-            </Link>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="w-full sm:w-auto h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base rounded-full backdrop-blur-sm bg-background/50 border-muted-foreground/30 hover:bg-accent/50"
+              onClick={() => window.dispatchEvent(new Event('openQuotePopup'))}
+            >
+              Get a Quote
+            </Button>
           </motion.div>
         </div>
       </div>

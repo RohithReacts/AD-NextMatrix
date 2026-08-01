@@ -27,7 +27,6 @@ export function Header() {
     { name: "Projects", href: "/#projects" },
     { name: "Pricing", href: "/#pricing" },
     { name: "About Us", href: "/#about-us" },
-    { name: "Clients", href: "/#testimonials" },
     { name: "FAQ", href: "/#faq" },
     { name: "Contact Us", href: "/#contact-us" },
   ];
@@ -66,11 +65,14 @@ export function Header() {
           </div>
 
           <ModeToggle />
-          <Link href="/get-a-quote">
-            <Button size="sm" variant="outline" className="hidden sm:flex md:flex px-5 font-medium transition-colors border-none hover:text-red-500">
-              Get a Quote
-            </Button>
-          </Link>
+          <Button 
+            size="sm" 
+            variant="outline" 
+            className="hidden sm:flex md:flex px-5 font-medium transition-colors border-none hover:text-red-500"
+            onClick={() => window.dispatchEvent(new Event('openQuotePopup'))}
+          >
+            Get a Quote
+          </Button>
 
           {/* Mobile Menu Toggle */}
           <Button 
@@ -100,11 +102,15 @@ export function Header() {
             ))}
           </nav>
           <div className="pt-4 border-t">
-            <Link href="/get-a-quote" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-medium">
-                Get a Quote
-              </Button>
-            </Link>
+            <Button 
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-medium"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                window.dispatchEvent(new Event('openQuotePopup'));
+              }}
+            >
+              Get a Quote
+            </Button>
           </div>
         </div>
       )}

@@ -66,12 +66,7 @@ export function Pricing() {
                 </h3>
               </CardHeader>
               <CardContent className="flex-1 flex flex-col text-center px-6 pb-8 pt-2">
-                <div className="mb-8">
-                  <span className="text-2xl lg:text-[26px] font-extrabold text-foreground block tracking-tighter mb-1">
-                    Get Price
-                  </span>
-                  <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Custom Quote</span>
-                </div>
+
                 
                 <ul className="space-y-4 mb-8 text-sm text-muted-foreground flex-1 text-left">
                   {plan.features.map((feature, i) => (

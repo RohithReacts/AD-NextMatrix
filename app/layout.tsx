@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/themes/theme-provider"
 import { Header } from "@/components/template/Header";
 import { Footer } from "@/components/template/Footer";
+import { GetAQuotePopup } from "@/components/template/GetAQuotePopup";
 import icon from "@/assets/icon.png";
-
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 const geistSans = Geist({
@@ -49,6 +49,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <GetAQuotePopup />
       </ThemeProvider></body>
     </html>
   );
