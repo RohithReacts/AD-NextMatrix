@@ -29,7 +29,7 @@ export function PriceForm({ productTitle }: { productTitle?: string }) {
         <Label htmlFor="email">Email ID <span className="text-muted-foreground text-xs font-normal">(Optional)</span></Label>
         <Input id="email" type="email" placeholder="Enter your email address" />
       </div>
-      <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 mt-2">Submit Request</Button>
+      <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 mt-2 text-white">Submit Request</Button>
     </form>
   );
 }

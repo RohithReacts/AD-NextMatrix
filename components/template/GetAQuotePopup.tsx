@@ -20,15 +20,8 @@ export function GetAQuotePopup() {
   ];
 
   useEffect(() => {
-    // Check if the popup was already closed in this session
-    const hasClosed = sessionStorage.getItem("quote_popup_closed");
-    if (!hasClosed) {
-      // Small delay for better UX
-      const timer = setTimeout(() => setIsOpen(true), 500);
-      return () => clearTimeout(timer);
-    }
-
-    // Listen to custom event for manual triggers from Header/Hero
+    // We no longer open automatically. LeadGate handles lead capture flow.
+    // We only listen to custom event for manual triggers from Header/Hero
     const handleOpenEvent = () => setIsOpen(true);
     window.addEventListener("openQuotePopup", handleOpenEvent);
     return () => window.removeEventListener("openQuotePopup", handleOpenEvent);
@@ -123,11 +116,11 @@ export function GetAQuotePopup() {
                   required
                 >
                   <option value="" disabled selected>Select a budget range</option>
-                  <option value="under-5k">Under $5,000</option>
-                  <option value="5k-10k">$5,000 - $10,000</option>
-                  <option value="10k-25k">$10,000 - $25,000</option>
-                  <option value="25k-50k">$25,000 - $50,000</option>
-                  <option value="50k+">$50,000+</option>
+                  <option value="under-500">Under $500</option>
+                  <option value="500-1k">$500 - $1,000</option>
+                  <option value="1k-2.5k">$1,000 - $2,500</option>
+                  <option value="2.5k-5k">$2,500 - $5,000</option>
+                  <option value="5k+">$5,000+</option>
                 </select>
               </div>
 

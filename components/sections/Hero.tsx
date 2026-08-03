@@ -47,7 +47,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.7, ease: "easeOut" }}
             className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-center gap-4"
           >
             <Link href="/#products" className="w-full sm:w-auto">

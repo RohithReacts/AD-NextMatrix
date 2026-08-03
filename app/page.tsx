@@ -6,6 +6,7 @@ import { Pricing } from "@/components/sections/Pricing";
 import { AboutUs } from "@/components/sections/AboutUs";
 import { FAQ } from "@/components/sections/FAQ";
 import { ContactUs } from "@/components/sections/ContactUs";
+import { LeadGate } from "@/components/template/LeadGate";
 
 export default function Home() {
   return (
@@ -14,11 +15,13 @@ export default function Home() {
         <Hero />
         <Features />
         <Products />
-        <Projects />
-        <Pricing />
-        <AboutUs />
-        <FAQ />
-        <ContactUs />
+        <LeadGate>
+          <Projects />
+          <Pricing />
+          <AboutUs />
+          <FAQ />
+          <ContactUs />
+        </LeadGate>
       </main>
     </div>
   );

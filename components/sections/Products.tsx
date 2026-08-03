@@ -151,11 +151,7 @@ export function Products() {
                   </DialogContent>
                 </Dialog>
               </CardContent>
-              <CardFooter className="justify-center pb-6 pt-0">
-                <Button variant="outline" className="w-full font-medium rounded-full border-border/80 hover:border-red-200 dark:hover:border-red-900/50 hover:bg-red-50/50 dark:hover:bg-red-950/30 hover:text-red-600 dark:hover:text-red-400 transition-all duration-300 flex items-center justify-center gap-2 group/btn">
-                  View Details <span className="text-lg group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
-                </Button>
-              </CardFooter>
+
             </Card>
           ))}
         </div>
