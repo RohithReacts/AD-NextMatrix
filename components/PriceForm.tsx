@@ -12,24 +12,31 @@ export function PriceForm({ productTitle }: { productTitle?: string }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 pt-4">
-      <div className="space-y-2">
-        <Label htmlFor="name">Name <span className="text-red-500">*</span></Label>
-        <Input id="name" required placeholder="Enter your name" />
+    <form onSubmit={handleSubmit} className="space-y-3.5 pt-2">
+      <div className="space-y-1.5">
+        <Label htmlFor="name" className="text-xs font-semibold text-foreground/80">Name <span className="text-red-500">*</span></Label>
+        <Input id="name" required placeholder="John Doe" className="h-9 text-sm transition-colors focus-visible:ring-red-500/30 border-border/50 bg-background/50" />
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="contact">Contact <span className="text-red-500">*</span></Label>
-        <Input id="contact" required placeholder="Enter your phone number" type="tel" />
+      
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-1.5">
+          <Label htmlFor="contact" className="text-xs font-semibold text-foreground/80">Contact <span className="text-red-500">*</span></Label>
+          <Input id="contact" required placeholder="+91 9876543210" type="tel" className="h-9 text-sm transition-colors focus-visible:ring-red-500/30 border-border/50 bg-background/50" />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="place" className="text-xs font-semibold text-foreground/80">City <span className="text-red-500">*</span></Label>
+          <Input id="place" required placeholder="Mumbai" className="h-9 text-sm transition-colors focus-visible:ring-red-500/30 border-border/50 bg-background/50" />
+        </div>
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="place">Place <span className="text-red-500">*</span></Label>
-        <Input id="place" required placeholder="Enter your city or location" />
+
+      <div className="space-y-1.5">
+        <Label htmlFor="email" className="text-xs font-semibold text-foreground/80">Email <span className="font-normal text-muted-foreground opacity-80">(Optional)</span></Label>
+        <Input id="email" type="email" placeholder="john@example.com" className="h-9 text-sm transition-colors focus-visible:ring-red-500/30 border-border/50 bg-background/50" />
       </div>
-      <div className="space-y-2">
-        <Label htmlFor="email">Email ID <span className="text-muted-foreground text-xs font-normal">(Optional)</span></Label>
-        <Input id="email" type="email" placeholder="Enter your email address" />
-      </div>
-      <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 mt-2 text-white">Submit Request</Button>
+
+      <Button type="submit" className="w-full h-10 mt-2 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-semibold shadow-md shadow-red-500/20 transition-all rounded-lg">
+        Submit Request
+      </Button>
     </form>
   );
 }

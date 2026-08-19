@@ -7,6 +7,8 @@ import { Header } from "@/components/template/Header";
 import { Footer } from "@/components/template/Footer";
 import { GetAQuotePopup } from "@/components/template/GetAQuotePopup";
 import icon from "@/assets/icon.png";
+import { Toaster } from "@/components/ui/toast";
+
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 const geistSans = Geist({
@@ -50,6 +52,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <GetAQuotePopup />
+        <Toaster />
       </ThemeProvider></body>
     </html>
   );

@@ -37,8 +37,8 @@ export function Header() {
         {/* Left: Logo */}
         <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center space-x-2">
-            <Image src={logoLight} width={170} height={50} alt='logo' className="block dark:hidden" />
-            <Image src={logoDark} width={170} height={50} alt='logo' className="hidden dark:block" />
+            <Image src={logoLight} width={170} height={50} alt='logo' className="block dark:hidden" priority />
+            <Image src={logoDark} width={170} height={50} alt='logo' className="hidden dark:block" priority />
           </Link>
         </div>
 

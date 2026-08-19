@@ -6,10 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import { toast } from "@/components/ui/toast";
 
 export function GetAQuotePopup() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const benefits = [
     "Customized IT solutions tailored to your needs",
@@ -34,22 +36,63 @@ export function GetAQuotePopup() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
     const formData = new FormData(e.currentTarget);
     const firstName = formData.get("first-name");
     const lastName = formData.get("last-name");
-    const email = formData.get("email");
     const phone = formData.get("phone");
     const budget = formData.get("budget");
     const projectDetails = formData.get("projectDetails");
     
-    const body = `Name: ${firstName} ${lastName}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0ABudget: ${budget}%0D%0A%0D%0AProject Details:%0D%0A${projectDetails}`;
-    window.location.href = `mailto:adnextmatrix@gmail.com?subject=New Quote Request from ${firstName} ${lastName}&body=${body}`;
+    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE");
+    formData.append("subject", `New Quote Request from ${firstName} ${lastName}`);
+    formData.append("from_name", `${firstName} ${lastName}`);
     
-    // Close on submit
-    setIsOpen(false);
-    sessionStorage.setItem("quote_popup_closed", "true");
+    const messageBody = `
+Phone: ${phone}
+Budget: ${budget}
+
+Project Details:
+${projectDetails}
+    `;
+    formData.append("message", messageBody);
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        toast.add({
+          type: "success",
+          title: "Quote Request Sent!",
+          description: "We've received your request and will get back to you within 24 hours.",
+        } as any);
+        (e.target as HTMLFormElement).reset();
+        setIsOpen(false);
+        sessionStorage.setItem("quote_popup_closed", "true");
+      } else {
+        toast.add({
+          type: "error",
+          title: "Error",
+          description: data.message || "Something went wrong. Please try again.",
+        } as any);
+      }
+    } catch (error) {
+      toast.add({
+        type: "error",
+        title: "Error",
+        description: "Failed to send request. Please check your internet connection.",
+      } as any);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -114,8 +157,9 @@ export function GetAQuotePopup() {
                   name="budget" 
                   className="flex h-11 w-full items-center justify-between rounded-md border border-input bg-muted/50 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   required
+                  defaultValue=""
                 >
-                  <option value="" disabled selected>Select a budget range</option>
+                  <option value="" disabled>Select a budget range</option>
                   <option value="under-500">Under $500</option>
                   <option value="500-1k">$500 - $1,000</option>
                   <option value="1k-2.5k">$1,000 - $2,500</option>
@@ -136,9 +180,18 @@ export function GetAQuotePopup() {
               </div>
 
               <div className="pt-2">
-                <Button type="submit" size="lg" className="w-full h-12 text-base font-semibold group">
-                  Request Quote
-                  <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <Button type="submit" size="lg" className="w-full h-12 text-base font-semibold group" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 w-5 h-5 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Request Quote
+                      <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </>
+                  )}
                 </Button>
                 <p className="text-center text-xs text-muted-foreground mt-3">
                   By submitting this form, you agree to our privacy policy and terms of service.
