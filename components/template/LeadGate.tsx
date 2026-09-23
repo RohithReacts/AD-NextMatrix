@@ -6,12 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowRight, LockIcon } from "lucide-react";
+import { ArrowRight, LockIcon, Loader2 } from "lucide-react";
+import { toast } from "@/components/ui/toast";
 
 export function LeadGate({ children }: { children: React.ReactNode }) {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -47,8 +49,10 @@ export function LeadGate({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name");
     const phone = formData.get("phone");
@@ -56,13 +60,53 @@ export function LeadGate({ children }: { children: React.ReactNode }) {
     const budget = formData.get("budget");
     const projectDetails = formData.get("projectDetails");
     
-    const body = `Name: ${name}%0D%0APhone: ${phone}%0D%0AEmail: ${email}%0D%0ABudget: ${budget}%0D%0AProject Details: ${projectDetails}`;
-    // Optional: open mailto
-    // window.location.href = `mailto:adnextmatrix@gmail.com?subject=New Lead: ${name}&body=${body}`;
-    
-    sessionStorage.setItem("lead_captured", "true");
-    setIsUnlocked(true);
-    setShowPopup(false);
+    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE");
+    formData.append("subject", `New Lead: ${name}`);
+    formData.append("from_name", name as string);
+
+    const messageBody = `
+Phone: ${phone}
+Email: ${email}
+Budget: ${budget}
+
+Project Details:
+${projectDetails}
+    `;
+    formData.append("message", messageBody);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        toast.add({
+          type: "success",
+          title: "Message Sent!",
+          description: "We've received your request.",
+        } as any);
+        sessionStorage.setItem("lead_captured", "true");
+        setIsUnlocked(true);
+        setShowPopup(false);
+      } else {
+        toast.add({
+          type: "error",
+          title: "Error",
+          description: data.message || "Something went wrong. Please try again.",
+        } as any);
+      }
+    } catch (error) {
+      toast.add({
+        type: "error",
+        title: "Error",
+        description: "Failed to send request. Please check your connection.",
+      } as any);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (mounted && isUnlocked) {
@@ -159,9 +203,18 @@ export function LeadGate({ children }: { children: React.ReactNode }) {
               <Label htmlFor="lead-project-details" className="text-xs">Project Details <span className="text-muted-foreground font-normal">(Optional)</span></Label>
               <Textarea id="lead-project-details" name="projectDetails" placeholder="Brief description..." className="bg-muted/50 min-h-[60px] text-sm resize-none" />
             </div>
-            <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 h-10 text-sm font-semibold mt-2 text-white group">
-              Request Quote
-              <ArrowRight className="ml-2 w-3 h-3 transition-transform group-hover:translate-x-1" />
+            <Button type="submit" className="w-full bg-red-600 hover:bg-red-700 h-10 text-sm font-semibold mt-2 text-white group" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 w-4 h-4 animate-spin inline" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  Request Quote
+                  <ArrowRight className="ml-2 w-3 h-3 transition-transform group-hover:translate-x-1 inline" />
+                </>
+              )}
             </Button>
             <div className="flex flex-col gap-1 mt-2">
               <Button type="button" variant="ghost" size="sm" className="w-full h-8 text-xs text-muted-foreground hover:text-foreground" onClick={() => {
