@@ -8,36 +8,26 @@ export function Pricing() {
     {
       title: "Indoor LED Display",
       subtitle: "(P2.5)",
-      price: "₹2,500 - ₹5,500",
-      unit: "per sq. ft.",
       features: ["High Resolution", "Indoor Use", "1 Year Warranty", "Free Installation"],
     },
     {
       title: "Outdoor LED Display",
       subtitle: "(P4 / P5)",
-      price: "₹4,000 - ₹8,500",
-      unit: "per sq. ft.",
       features: ["High Brightness", "Weather Proof", "1 Year Warranty", "Free Installation"],
     },
     {
       title: "Digital Signage",
       subtitle: '(43" - 55")',
-      price: "₹25,000 - ₹75,000",
-      unit: "per unit",
       features: ["Ultra HD Display", "USB / WiFi Support", "1 Year Warranty", "Free Installation"],
     },
     {
       title: "Self-Service Kiosk",
       subtitle: "",
-      price: "₹90,000 - ₹2,50,000",
-      unit: "per unit",
       features: ["Touchscreen", "Custom Software", "1 Year Warranty", "Free Installation"],
     },
     {
       title: "Drive-Thru Menu Board",
       subtitle: "",
-      price: "₹1,50,000 - ₹5,00,000",
-      unit: "per unit",
       features: ["High Brightness", "Weather Proof", "1 Year Warranty", "Free Installation"],
     },
   ];

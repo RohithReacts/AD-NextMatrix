@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardTitle, } from "@/components/ui/card";
 
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
@@ -26,73 +26,63 @@ const products = [
     id: 1,
     title: "Self-Service Kiosk",
     image: kioskImg,
-    price: "₹90,000 - ₹2,50,000"
   },
   {
     id: 2,
     title: "Outdoor LED Display",
     image: outdoorImg,
-    price: "₹4,000 - ₹8,500 / sq.ft."
   },
   {
     id: 3,
     title: "Drive-Thru Menu Board",
     image: driveThruImg,
-    price: "₹1,50,000 - ₹5,00,000"
   },
   {
     id: 4,
     title: "Digital Signage",
     image: digitalSignageImg,
-    price: "₹25,000 - ₹75,000"
   },
   {
     id: 5,
     title: "Window Display",
     image: windowDisplayImg,
-    price: "₹40,000 - ₹1,10,000"
   },
   {
     id: 6,
     title: "LED Video Walls",
     image: ledVideoWallsImg,
-    price: "₹3,000 - ₹8,000 / sq.ft."
   },
   {
     id: 7,
     title: "Scrolling LED Boards",
     image: scrollingLEDBoardsImg,
-    price: "₹8,000 - ₹40,000"
   },
   {
     id: 8,
     title: "LED Standees",
     image: ledStandeesImg,
-    price: "₹15,000 - ₹45,000"
   },
   {
     id: 9,
     title: "Acrylic Signage",
     image: acrylicSignageImg,
-    price: "₹500 - ₹2,000 / sq.ft."
   },
   {
     id: 10,
     title: "SS & Channel Letters",
     image: ssChannelLettersImg,
-    price: "₹150 - ₹500 / inch"
   }
 ];
 
 const whyChooseUsFeatures = [
   {
     icon: <HugeiconsIcon icon={Award01Icon} className="w-8 h-8 text-red-600" strokeWidth={1.5} />,
-    value: "10+",
+    value: "2+",
     label: "Years Experience",
   },
   {
     icon: <HugeiconsIcon icon={ComputerVideoIcon} className="w-8 h-8 text-red-600" strokeWidth={1.5} />,
-    value: "500+",
+    value: "100+",
     label: "Projects Completed",
   },
   {
@@ -132,17 +122,15 @@ export function Products() {
               {/* Glow effect on hover */}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-              <div className="relative h-72 w-full overflow-hidden shrink-0 bg-white dark:bg-zinc-950 p-2 border-b border-border/20">
-                <div className="relative w-full h-full rounded-xl overflow-hidden bg-zinc-50/50 dark:bg-zinc-900/50 flex items-center justify-center">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    fill
-                    className="object-contain p-1 group-hover:scale-110 transition-transform duration-700 ease-out drop-shadow-sm"
-                  />
-                  {/* Subtle overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                </div>
+              <div className="relative h-64 w-full overflow-hidden shrink-0 bg-muted/20 border-b border-border/30">
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
 
               <div className="flex-1 flex flex-col p-4 relative z-10">
@@ -152,18 +140,18 @@ export function Products() {
                   </CardTitle>
                 </div>
 
-                <div className="mt-auto flex items-end justify-end gap-2 pt-3 border-t border-border/40">
+                <div className="mt-auto pt-3 border-t border-border/40">
                   <a
                     href={`https://wa.me/919533811528?text=${encodeURIComponent(`Hi, I would like to know the price of ${product.title}.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="block w-full"
                   >
-                    <Button size="sm" className="relative overflow-hidden font-bold rounded-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white shadow-md shadow-green-500/20 hover:shadow-green-500/40 transition-all duration-300 border-none group/btn h-8 px-4 shrink-0 flex items-center gap-1.5">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" className="relative z-10">
-                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                    <Button className="w-full h-10 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-300 border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-600 text-emerald-700 dark:text-emerald-400 hover:text-white dark:hover:text-white dark:bg-emerald-950/30 dark:border-emerald-500/25 shadow-xs hover:shadow-md hover:shadow-emerald-500/20 active:scale-[0.98] group/btn cursor-pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" className="shrink-0 transition-transform duration-300 group-hover/btn:scale-110">
+                        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
                       </svg>
-                      <span className="relative z-10 text-xs">Chat for Price</span>
-                      <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-in-out" />
+                      <span>Chat for Price</span>
                     </Button>
                   </a>
                 </div>
